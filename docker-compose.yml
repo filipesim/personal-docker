@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  novo-horizonte:
+    image: php7
+    build: 
+      context: .
+      dockerfile: Dockerfile_php7
+    ports:
+      - "8091:80"
+      - "9443:443"
+    container_name: novo-horizonte
+    working_dir: /
+    restart: always
+    volumes:
+      - /d/Projetos/Timake/novo-horizonte:/var/www/html/novo-horizonte
+    networks: 
+      - timake_services
+networks: 
+  timake_services:
+    driver: bridge 
+    ipam: 
+      config: 
+       - subnet: 192.168.101.0/24
