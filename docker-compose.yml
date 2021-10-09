@@ -15,6 +15,33 @@ services:
       - /d/Projetos/Timake/novo-horizonte:/var/www/html/novo-horizonte
     networks: 
       - timake_services
+
+  geral:
+    image: php7
+    build: 
+      context: .
+      dockerfile: Dockerfile_php7
+    ports:
+      - "8092:80"
+      - "9444:443"
+    container_name: geral
+    working_dir: /
+    restart: always
+    volumes:
+      - /d/Projetos/Timake:/var/www/html
+    networks: 
+      - timake_services
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: mysql
+    ports:
+      - "3366:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
 networks: 
   timake_services:
     driver: bridge 
