@@ -10,7 +10,6 @@ services:
       - "9443:443"
     container_name: novo-horizonte
     working_dir: /
-    restart: always
     volumes:
       - /d/Projetos/Timake/novo-horizonte:/var/www/html/novo-horizonte
     networks: 
@@ -26,7 +25,6 @@ services:
       - "9444:443"
     container_name: geral
     working_dir: /
-    restart: always
     volumes:
       - /d/Projetos/Timake:/var/www/html
     networks: 
@@ -35,7 +33,6 @@ services:
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
-    restart: always
     container_name: mysql
     ports:
       - "3366:3306"
