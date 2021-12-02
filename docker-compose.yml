@@ -24,6 +24,7 @@ services:
       - "8092:80"
       - "9444:443"
     container_name: geral
+    restart: always
     working_dir: /
     volumes:
       - /d/Projetos/Timake:/var/www/html
